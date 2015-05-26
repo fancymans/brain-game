@@ -683,12 +683,7 @@ void Pod::uncloakPod()
 
 void Pod::generateUncloakPFX()
 {
-    if (!uncloakNode &&
-        mtype == POD_CRYSTAL &&
-        podSound != POD_SOUND_HOLDOUT &&
-        podSound != POD_SOUND_UNKNOWN
-        )
-    {
+    if (!uncloakNode && mtype == POD_CRYSTAL && podSound != POD_SOUND_HOLDOUT && podSound != POD_SOUND_UNKNOWN) {
         uncloakNode = head->createChildSceneNode("UncloakNode" + Util::toStringInt(uncloakPfxID));
         std::string particleName = "General/UncloakPFX";
         uncloakPFX = uncloakNode->getCreator()->createParticleSystem("UncloakFX" + Util::toStringInt(uncloakPfxID), particleName);
@@ -699,40 +694,16 @@ void Pod::generateUncloakPFX()
         Ogre::ColourValue newPodColor;
         if (podColor == POD_COLOR_ORANGE) {
             uncloakPFX->setMaterialName("General/UncloakCircleOrange");
-//            newPodColor = ColourValue(1.0, 0.5, 0.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         } else if (podColor == POD_COLOR_PINK) {
             uncloakPFX->setMaterialName("General/UncloakCircleRed");
-//            newPodColor = ColourValue(1.0, 0.3, 0.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         } else if (podColor == POD_COLOR_GREEN) {
             uncloakPFX->setMaterialName("General/UncloakCircleGreen");
-//            newPodColor = ColourValue(0.0, 1.0, 0.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         } else if (podColor == POD_COLOR_BLUE) {
             uncloakPFX->setMaterialName("General/UncloakCircleBlue");
-//            newPodColor = ColourValue(0.0, 0.5, 1.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         } else if (podColor == POD_COLOR_YELLOW) {
             uncloakPFX->setMaterialName("General/UncloakCircleYellow");
-//            newPodColor = ColourValue(1, 0.9, 0.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         } else {
             uncloakPFX->setMaterialName("General/UncloakCircleGray");
-//            newPodColor = ColourValue(1.0, 0.5, 0.0);
-//            for (int i = 0; i < uncloakPFX->getNumEmitters(); ++i) {
-//                uncloakPFX->getEmitter(i)->setColour(newPodColor);
-//            }
         }
     }
 }

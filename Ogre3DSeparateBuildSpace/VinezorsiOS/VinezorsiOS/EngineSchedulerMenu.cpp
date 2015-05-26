@@ -151,11 +151,6 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
         player->choice1RestartCounter++;
         player->choice2RestartCounter++;
         player->choice3RestartCounter++;
-
-
-        
-    
-        
     }
     else if (queryGUI == "play")
     {
@@ -205,10 +200,7 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
                     }
                 }
             }
-            
         }
-        
-        
     }
     else if (queryGUI == "reroll")
     {
@@ -231,6 +223,36 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
                     player->rerollCounter--;
                     player->saveProgress(globals.savePath);
                 }
+            }
+        }
+    }
+}
+
+void EngineSchedulerMenu::activatePerformDoubleTap(float x, float y)
+{
+    std::string queryGUI = hud->processButtons(Vector2(x, y));
+    
+    if (queryGUI != "")
+        player->reactGUI();
+    
+    // testForLevelButtons checks which choice was double tapped and assigns it to player->marbleChoice
+    if (testForLevelButtons(queryGUI)) {
+        // If a level is selected, then we can continue,
+        // Also make sure it isn't a level selected from the history panel
+        if (player->levelRequest && player->levelRequest->second.rating < 0)
+        {
+            engineStateMgr->requestPushEngine(ENGINE_STAGE, player);
+            if ((player->choice1RestartCounter < player->numRetries) && (player->marbleChoice == 1))
+            {
+                player->choice1RestartCounter++;
+            }
+            else if ((player->choice2RestartCounter < player->numRetries) && (player->marbleChoice == 2))
+            {
+                player->choice2RestartCounter++;
+            }
+            else if ((player->choice3RestartCounter < player->numRetries) && (player->marbleChoice == 3))
+            {
+                player->choice3RestartCounter++;
             }
         }
     }
