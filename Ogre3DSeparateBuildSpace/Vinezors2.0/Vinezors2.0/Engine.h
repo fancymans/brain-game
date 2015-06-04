@@ -15,6 +15,7 @@
 #include <OISInputManager.h>
 #include <OISKeyboard.h>
 #include <OISMouse.h>
+#include "TutorialManager.h"
 
 enum EngineState { ENGINE_NONE, ENGINE_STAGE, ENGINE_SCHEDULER_MENU, ENGINE_LEVEL_SELECTION, ENGINE_MAIN_MENU, ENGINE_CREDITS, ENGINE_MAIN_SETTINGS, ENGINE_CONTROL_SETTINGS, ENGINE_STUDY_SETTINGS, ENGINE_INFORMATION };
 
@@ -57,7 +58,7 @@ public:
     virtual void activateVelocity(float vel);
     virtual void activateAngleTurn(float angle, float vel);
     
-    virtual void activateReturnFromPopup();
+    virtual void activateReturnFromPopup(TutorialManager::TutorialSlidesType type);
     
     
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS

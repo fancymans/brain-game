@@ -28,8 +28,9 @@ public:
     }
     
     virtual void activatePerformSingleTap(float x, float y);
+    virtual void activatePerformDoubleTap(float x, float y);
     
-    virtual void activateReturnFromPopup();
+    virtual void activateReturnFromPopup(TutorialManager::TutorialSlidesType type);
     
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
     virtual void mouseMoved(const OIS::MouseEvent &evt);

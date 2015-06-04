@@ -112,7 +112,7 @@ std::string getEndFeedbackText(int accuracy, Evaluation eval)
 }
 
 TutorialManager::TutorialManager()
-: popupOverlay(NULL), popupWindowBackground(NULL), popupSubWindowBackground(NULL), queue(), slides(), visitedSlide(), enableSlides(true), slideNo(0), yoffset(0.0), startTimer(0.0f), additionalText(""), specialStage(false), specialSession(false)
+: popupOverlay(NULL), popupWindowBackground(NULL), popupSubWindowBackground(NULL), queue(), slides(), visitedSlide(), enableSlides(true), slideNo(0), yoffset(0.0), startTimer(0.0f), additionalText(""), specialStage(false), specialSession(false), type(TutorialSlidesType(-1))
 {
     visitedSlide = std::vector<bool>(NUM_TUTORIAL_SLIDES, false);
     alloc();
@@ -199,6 +199,19 @@ std::vector<TutorialSlide> TutorialManager::getSlides(TutorialSlidesType type) c
             //ret.push_back(TutorialSlide("That's it for Today.\n    Please check in.", "General/TutorialBackdrop", ""));
             ret.push_back(TutorialSlide("\n\n  Good work today!\n\n Make sure you take\n     a break.\n\n   You earned it!", "General/TutorialBackdrop", ""));
             break;
+        case TUTORIAL_SLIDES_FLIGHT_TRAINER:
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer1", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer2", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer3", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer4", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer5", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer6", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer7", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer8", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer9", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer10", ""));
+            ret.push_back(TutorialSlide("", "General/TutorialFlightTrainer11", ""));
+            break;
         default:
             break;
     }
@@ -208,8 +221,11 @@ std::vector<TutorialSlide> TutorialManager::getSlides(TutorialSlidesType type) c
 // Load set of slides in a queue with a timer that when expired, will load the slides up
 void TutorialManager::prepareSlides(TutorialSlidesType type, float startTimer)
 {
+    this->type = type;
+    
     specialSession = false;
     specialStage = false;
+    
     if (type == TUTORIAL_END_OF_SESSION)
         specialSession = true;
     else if (type == TUTORIAL_END_OF_STAGE)
@@ -223,6 +239,7 @@ void TutorialManager::prepareSlides(TutorialSlidesType type, float startTimer)
         fireworkEffects.clear();
         fireworkTimer = 0.0f;
     }
+    
     if ((isEnabled() && !visitedSlide[type]) || isSpecial())
     {
         prepareSlides(getSlides(type), startTimer);
@@ -666,6 +683,8 @@ bool TutorialManager::processInput(Vector2 target)
             popupText4->setCaption("");
             slides.clear();
             slideNo = 0;
+            // resets the tutorial type
+            this->type = TutorialSlidesType(-1);
             hide();
         }
         else
@@ -676,6 +695,8 @@ bool TutorialManager::processInput(Vector2 target)
             {
                 slides.clear();
                 slideNo = 0;
+                // resets the tutorial type
+                this->type = TutorialSlidesType(-1);
                 hide();
             }
         }
@@ -685,6 +706,8 @@ bool TutorialManager::processInput(Vector2 target)
         if (!isSpecial()) {
             slides.clear();
             slideNo = 0;
+            // resets the tutorial type
+            this->type = TutorialSlidesType(-1);
             hide();
         }
     }
@@ -694,18 +717,31 @@ bool TutorialManager::processInput(Vector2 target)
 void TutorialManager::adjust()
 {
     popupWindowBackground->setMetricsMode(GMM_RELATIVE);
-    popupWindowBackground->setPosition(0.250, yoffset + 0.25);
-    popupWindowBackground->setDimensions(0.50, 0.50);
-    
     popupSubWindowBackground->setMetricsMode(GMM_RELATIVE);
-    popupSubWindowBackground->setPosition(0.250, yoffset + 0.25);
-    popupSubWindowBackground->setDimensions(0.50, 0.50);
-    
     float bw = 0.075;
     float bh = bw * globals.screenWidth / globals.screenHeight;
+    
+    if (this->type == TUTORIAL_SLIDES_FLIGHT_TRAINER) {
+        // make flight trainer tutorials full screen
+        popupWindowBackground->setPosition(0, 0);
+        popupWindowBackground->setDimensions(1, 1);
+        popupSubWindowBackground->setPosition(0, 0);
+        popupSubWindowBackground->setDimensions(1, 1);
+        buttons[BUTTON_GORIGHT].setButton("goright", popupOverlay, GMM_RELATIVE, Vector2(0, 0), Vector2(1, 1), popupGoRightBackground, NULL);
+        buttons[BUTTON_GORIGHT].hide(true);
+        buttons[BUTTON_EXIT].hide(false);
+    } else {
+        popupWindowBackground->setPosition(0.250, yoffset + 0.25);
+        popupWindowBackground->setDimensions(0.50, 0.50);
+        popupSubWindowBackground->setPosition(0.250, yoffset + 0.25);
+        popupSubWindowBackground->setDimensions(0.50, 0.50);
+        buttons[BUTTON_GORIGHT].setButton("goright", popupOverlay, GMM_RELATIVE, Vector2(0.400, 0.425), Vector2(bw, bh), popupGoRightBackground, NULL);
+        buttons[BUTTON_GORIGHT].show();
+        buttons[BUTTON_EXIT].setButton("exit", popupOverlay, GMM_RELATIVE, Vector2(0.300, 0.425), Vector2(bw, bh), popupExitBackground, NULL);
+        buttons[BUTTON_EXIT].show();
+    }
+    
     //buttons[BUTTON_GOLEFT].setButton("goleft", popupOverlay, GMM_RELATIVE, Vector2(0.175, 0.425), Vector2(bw, bh), popupGoLeftBackground, NULL);
-    buttons[BUTTON_GORIGHT].setButton("goright", popupOverlay, GMM_RELATIVE, Vector2(0.400, 0.425), Vector2(bw, bh), popupGoRightBackground, NULL);
-    buttons[BUTTON_EXIT].setButton("exit", popupOverlay, GMM_RELATIVE, Vector2(0.300, 0.425), Vector2(bw, bh), popupExitBackground, NULL);
     
     popupText1->setMetricsMode(GMM_RELATIVE);
     popupText1->setAlignment(TextAreaOverlayElement::Left);

@@ -15,9 +15,12 @@ void HudButton::setActive(bool value)
     active = value;
 }
 
-void HudButton::hide()
+void HudButton::hide(bool active)
 {
-    setActive(false);
+    // active determines whether the button is still functional or not
+    // when active = true the button function
+    // when active = false the button is inactive
+    setActive(active);
     if (backgroundRef)
         backgroundRef->hide();
     if (textRef)

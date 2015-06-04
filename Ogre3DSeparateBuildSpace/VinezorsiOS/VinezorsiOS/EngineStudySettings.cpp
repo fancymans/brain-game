@@ -190,7 +190,7 @@ void EngineStudySettings::activatePerformSingleTap(float x, float y)
                 
                 //Hide UnlimitedFuel
                 overlay1->remove2D(hud->enableUnlimitedFuelBackground);
-                hud->buttons[hud->BUTTON_ENABLE_UNLIMITED_FUEL].hide();
+                hud->buttons[hud->BUTTON_ENABLE_UNLIMITED_FUEL].hide(false);
                 
                 //Hide Holdout and Holdout Delay
                 overlay1->remove2D(hud->enableHoldoutBackground);
@@ -198,35 +198,35 @@ void EngineStudySettings::activatePerformSingleTap(float x, float y)
                 overlay1->remove2D(hud->enableHoldoutDelayButtonBackground);
                 overlay1->remove2D(hud->enableHoldoutDelayNumberButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_HOLDOUT].hide();
-                hud->buttons[hud->BUTTON_ENABLE_HOLDOUT_DELAY].hide();
-                hud->buttons[hud->BUTTON_HOLDOUT_DELAY_NUMBER].hide();
+                hud->buttons[hud->BUTTON_ENABLE_HOLDOUT].hide(false);
+                hud->buttons[hud->BUTTON_ENABLE_HOLDOUT_DELAY].hide(false);
+                hud->buttons[hud->BUTTON_HOLDOUT_DELAY_NUMBER].hide(false);
                 
                 //Hide ManRecess
                 overlay1->remove2D(hud->enableMandatoryRecessBackground);
                 overlay1->remove2D(hud->enableMandatoryRecessButtonBackground);
                 overlay1->remove2D(hud->enableMandatoryRecessNumberBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_MANDATORY_RECESS].hide();
-                hud->buttons[hud->BUTTON_MANDATORY_RECESS_NUMBER].hide();
+                hud->buttons[hud->BUTTON_ENABLE_MANDATORY_RECESS].hide(false);
+                hud->buttons[hud->BUTTON_MANDATORY_RECESS_NUMBER].hide(false);
                 
                 //Hide init Velocity
                 overlay1->remove2D(hud->initSpeedBackground);
-                hud->buttons[hud->BUTTON_INPUT_INIT_SPEED].hide();
+                hud->buttons[hud->BUTTON_INPUT_INIT_SPEED].hide(false);
                 
                 //Hide New Nav
                 overlay1->remove2D(hud->enableNewNavBackground);
                 overlay1->remove2D(hud->enableNewNavButtonBackground);
                 overlay1->remove2D(hud->enableNewNavNumberButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_NEW_NAV].hide();
-                hud->buttons[hud->BUTTON_ENABLE_NEW_NAV_NUMBER].hide();
+                hud->buttons[hud->BUTTON_ENABLE_NEW_NAV].hide(false);
+                hud->buttons[hud->BUTTON_ENABLE_NEW_NAV_NUMBER].hide(false);
                 
                 //Hide New Sounds
                 overlay1->remove2D(hud->enableNewSoundsBackground);
                 overlay1->remove2D(hud->enableNewSoundsButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_NEW_SOUNDS].hide();
+                hud->buttons[hud->BUTTON_ENABLE_NEW_SOUNDS].hide(false);
                 
                 
                 //Hide Independent Recess
@@ -235,21 +235,21 @@ void EngineStudySettings::activatePerformSingleTap(float x, float y)
                 overlay1->remove2D(hud->enableIndRecessNumberButtonBackground);
                 overlay1->remove2D(hud->enableIndRecessFixedButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS].hide();
-                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS_NUMBER].hide();
-                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS_FIXED].hide();
+                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS].hide(false);
+                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS_NUMBER].hide(false);
+                hud->buttons[hud->BUTTON_ENABLE_IND_RECESS_FIXED].hide(false);
                 
                 //Hide Passcode
                 overlay1->remove2D(hud->enableSettingsPasscodeBackground);
                 overlay1->remove2D(hud->enableSettingsPasscodeButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_PASSCODE].hide();
+                hud->buttons[hud->BUTTON_ENABLE_PASSCODE].hide(false);
                 
                 //Hide Session ID
                 overlay1->remove2D(hud->enableSessionScreenBackground);
                 overlay1->remove2D(hud->enableSessionScreenButtonBackground);
                 
-                hud->buttons[hud->BUTTON_ENABLE_SESSION_SCREEN].hide();
+                hud->buttons[hud->BUTTON_ENABLE_SESSION_SCREEN].hide(false);
                 
                 //Hide Session Time Settings
                 overlay1->remove2D(hud->sessionTimeSettingsBackground);
@@ -257,9 +257,9 @@ void EngineStudySettings::activatePerformSingleTap(float x, float y)
                 overlay1->remove2D(hud->sessionEndTimeNumberBackground);
                 overlay1->remove2D(hud->sessionNumNumberBackground);
                 
-                hud->buttons[hud->BUTTON_SESSION_START_NUMBER].hide();
-                hud->buttons[hud->BUTTON_SESSION_END_NUMBER].hide();
-                hud->buttons[hud->BUTTON_NUM_OF_SESSIONS_NUMBER].hide();
+                hud->buttons[hud->BUTTON_SESSION_START_NUMBER].hide(false);
+                hud->buttons[hud->BUTTON_SESSION_END_NUMBER].hide(false);
+                hud->buttons[hud->BUTTON_NUM_OF_SESSIONS_NUMBER].hide(false);
                 
                 
                 //SHOW PAGE 2
@@ -373,24 +373,24 @@ void EngineStudySettings::activatePerformSingleTap(float x, float y)
                 
                 //Hide Holdout Min Upper Bound
                 overlay1->remove2D(hud->holdoutMinUpperBoundNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_MIN_UPPER_BOUND].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_MIN_UPPER_BOUND].hide(false);
                 
                 overlay1->remove2D(hud->holdoutMaxUpperBoundNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_MAX_UPPER_BOUND].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_MAX_UPPER_BOUND].hide(false);
                 
                 //Hide Holdout Lower Bound Time
                 overlay1->remove2D(hud->holdoutLowerBoundTimeNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_LOWER_BOUND_TIME].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_LOWER_BOUND_TIME].hide(false);
                 //Hide Holdout Min Upper Bound Time
                 overlay1->remove2D(hud->holdoutMinUpperBoundTimeNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_MIN_UPPER_BOUND_TIME].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_MIN_UPPER_BOUND_TIME].hide(false);
                 //Hide Holdout Max Upper Bound Time
                 overlay1->remove2D(hud->holdoutMaxUpperBoundTimeNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_MAX_UPPER_BOUND_TIME].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_MAX_UPPER_BOUND_TIME].hide(false);
                 
                 //Hide Holdout Steps
                 overlay1->remove2D(hud->holdoutStepsNumberBackground);
-                hud->buttons[hud->BUTTON_HOLDOUT_STEPS].hide();
+                hud->buttons[hud->BUTTON_HOLDOUT_STEPS].hide(false);
                 
             }
             

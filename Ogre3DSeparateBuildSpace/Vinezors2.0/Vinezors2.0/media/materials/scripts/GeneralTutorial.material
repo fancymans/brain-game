@@ -13,7 +13,7 @@ material General/TutorialBackdrop
             tex_border_colour 0 0 0 0
             tex_address_mode border
         }
-      } 
+      }
     }
 }
 
@@ -49,7 +49,7 @@ material General/TutorialTextbox1-1
         {
             texture Textbox1-1.png
         }
-      } 
+      }
     }
 }
 
@@ -66,7 +66,7 @@ material General/TutorialTextbox1-2
         {
             texture Textbox1-2.png
         }
-      } 
+      }
     }
 }
 
@@ -83,7 +83,7 @@ material General/TutorialTextbox1-3
         {
             texture Textbox1-3.png
         }
-      } 
+      }
     }
 }
 
@@ -100,7 +100,7 @@ material General/TutorialTextbox2-1
         {
             texture Textbox2-1.png
         }
-      } 
+      }
     }
 }
 
@@ -117,7 +117,7 @@ material General/TutorialTextbox2-2
         {
             texture Textbox2-2.png
         }
-      } 
+      }
     }
 }
 
@@ -134,7 +134,7 @@ material General/TutorialTextbox2-3a
         {
             texture Textbox2-3a.png
         }
-      } 
+      }
     }
 }
 
@@ -168,7 +168,7 @@ material General/TutorialTextbox2-4a
         {
             texture Textbox2-4a.png
         }
-      } 
+      }
     }
 }
 
@@ -185,7 +185,7 @@ material General/TutorialTextbox2-4b
         {
             texture Textbox2-4b.png
         }
-      } 
+      }
     }
 }
 
@@ -202,7 +202,7 @@ material General/TutorialTextbox2-5
         {
             texture Textbox2-5.png
         }
-      } 
+      }
     }
 }
 
@@ -236,7 +236,7 @@ material General/TutorialTextbox3-1
         {
             texture Textbox3-1.png
         }
-      } 
+      }
     }
 }
 
@@ -253,7 +253,7 @@ material General/TutorialTextbox3-2a
         {
             texture Textbox3-2a.png
         }
-      } 
+      }
     }
 }
 
@@ -270,7 +270,7 @@ material General/TutorialTextbox3-2b
         {
             texture Textbox3-2b.png
         }
-      } 
+      }
     }
 }
 
@@ -287,7 +287,7 @@ material General/TutorialTextboxHoldout1
         {
             texture TextboxHoldout1.png
         }
-      } 
+      }
     }
 }
 
@@ -304,7 +304,7 @@ material General/TutorialTextboxHoldout2
         {
             texture TextboxHoldout2.png
         }
-      } 
+      }
     }
 }
 
@@ -321,7 +321,7 @@ material General/TutorialTextboxSeeingMatch
         {
             texture TextboxSeeingMatch.png
         }
-      } 
+      }
     }
 }
 
@@ -338,7 +338,7 @@ material General/TutorialTextboxMissingMatch
         {
             texture TextboxMissingMatch.png
         }
-      } 
+      }
     }
 }
 
@@ -355,7 +355,7 @@ material General/TutorialTextboxIncorrectMatch
         {
             texture TextboxIncorrectMatch.png
         }
-      } 
+      }
     }
 }
 
@@ -372,7 +372,7 @@ material General/TutorialTextboxObstacle
         {
             texture TextboxObstacle.png
         }
-      } 
+      }
     }
 }
 
@@ -389,7 +389,7 @@ material General/TutorialTextboxSoundOnly
         {
             texture TextboxSoundOnly.png
         }
-      } 
+      }
     }
 }
 
@@ -410,3 +410,206 @@ material General/TutorialTextboxFuelWarning
     }
 }
 
+material General/TutorialFlightTrainer1
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer1.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer1
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer1.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer2
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer2.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer3
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer3.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer4
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer4.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer5
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer5.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer6
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer6.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer7
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer7.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer8
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer8.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer9
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer9.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer10
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer10.png
+            }
+        }
+    }
+}
+
+material General/TutorialFlightTrainer11
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            texture_unit
+            {
+                texture TutorialFlightTrainer11.png
+            }
+        }
+    }
+}

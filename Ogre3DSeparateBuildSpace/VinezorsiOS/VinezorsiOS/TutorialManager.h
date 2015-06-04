@@ -76,7 +76,7 @@ public:
     TutorialManager();
     ~TutorialManager();
     
-    const int NUM_TUTORIAL_SLIDES = 16;
+    const int NUM_TUTORIAL_SLIDES = 17;
     enum TutorialSlidesType {
         TUTORIAL_SLIDES_TEXTBOX_NAVIGATION,
         TUTORIAL_SLIDES_TEXTBOX_1BACK,
@@ -92,9 +92,11 @@ public:
         TUTORIAL_SLIDES_TEXTBOX_HOLDOUT1,
         TUTORIAL_SLIDES_TEXTBOX_HOLDOUT2,
         TUTORIAL_SLIDES_TEXTBOX_FUEL,
+        TUTORIAL_SLIDES_FLIGHT_TRAINER,
         TUTORIAL_END_OF_STAGE,
         TUTORIAL_END_OF_SESSION
     };
+    TutorialSlidesType type;
     
     bool isEnabled() const;
     void enable();

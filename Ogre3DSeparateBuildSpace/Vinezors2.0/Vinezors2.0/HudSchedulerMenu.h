@@ -31,6 +31,8 @@ public:
     
     void setSelectToIcon(PanelOverlayElement* icon, int mode);
     
+    void setTimeRemaining();
+    
     static const int NUM_SELECTIONS = 3;
     static const int SCHEDULE_LEN = 5;
     

@@ -26,7 +26,7 @@ struct HudButton
     HudButton() : name(""), overlay(NULL), metric(), p(), dim(), backgroundRef(NULL), textRef(NULL), active(true) {}
     
     void setActive(bool value);
-    void hide();
+    void hide(bool active);
     void show();
     void setButton(std::string name, Overlay* olay, GuiMetricsMode metricMode, Vector2 pos, Vector2 dimension, PanelOverlayElement* bgPtr, TextAreaOverlayElement* txtPtr);
     bool isInside(Vector2 target) const;

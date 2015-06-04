@@ -781,7 +781,7 @@ void HudStage::setGoButtonState(bool active, bool color)
     else
     {
         goOffsetDest = 0.7;
-        buttons[BUTTON_GO].hide();
+        buttons[BUTTON_GO].hide(false);
     }
     if (color)
         goBackground->setMaterialName("General/ButtonGo");

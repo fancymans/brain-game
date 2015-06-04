@@ -50,7 +50,9 @@ void EngineSchedulerMenu::enter()
     }
     else
     {
+        
         player->startMenu();
+        tutorialMgr->prepareSlides(TutorialManager::TutorialSlidesType::TUTORIAL_SLIDES_FLIGHT_TRAINER);
         
         switch (player->lastPlayed)
         {
@@ -236,13 +238,47 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
     }
 }
 
-void EngineSchedulerMenu::activateReturnFromPopup()
+void EngineSchedulerMenu::activatePerformDoubleTap(float x, float y)
+{
+    std::string queryGUI = hud->processButtons(Vector2(x, y));
+    
+    if (queryGUI != "")
+        player->reactGUI();
+    
+    // testForLevelButtons checks which choice was double tapped and assigns it to player->marbleChoice
+    if (testForLevelButtons(queryGUI)) {
+        // If a level is selected, then we can continue,
+        // Also make sure it isn't a level selected from the history panel
+        if (player->levelRequest && player->levelRequest->second.rating < 0)
+        {
+            engineStateMgr->requestPushEngine(ENGINE_STAGE, player);
+            if ((player->choice1RestartCounter < player->numRetries) && (player->marbleChoice == 1))
+            {
+                player->choice1RestartCounter++;
+            }
+            else if ((player->choice2RestartCounter < player->numRetries) && (player->marbleChoice == 2))
+            {
+                player->choice2RestartCounter++;
+            }
+            else if ((player->choice3RestartCounter < player->numRetries) && (player->marbleChoice == 3))
+            {
+                player->choice3RestartCounter++;
+            }
+        }
+    }
+}
+
+
+void EngineSchedulerMenu::activateReturnFromPopup(TutorialManager::TutorialSlidesType type)
 {
     // Fortunately, the only tutorial popup for the scheduler menu is
     // the session over window popup. So we can use this function to handle
     // that.
-    engineStateMgr->requestPopEngine();
-    player->sessionStarted = false;
+    
+    if (type != TutorialManager::TutorialSlidesType::TUTORIAL_SLIDES_FLIGHT_TRAINER) {
+        engineStateMgr->requestPopEngine();
+        player->sessionStarted = false;
+    }
 }
 
 #if !defined(OGRE_IS_IOS)

@@ -109,7 +109,7 @@ void Engine::activateAngleTurn(float angle, float vel)
     
 }
 
-void Engine::activateReturnFromPopup()
+void Engine::activateReturnFromPopup(TutorialManager::TutorialSlidesType type)
 {
     
 }

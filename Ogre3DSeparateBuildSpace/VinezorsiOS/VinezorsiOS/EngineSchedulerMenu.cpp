@@ -50,7 +50,9 @@ void EngineSchedulerMenu::enter()
     }
     else
     {
+        
         player->startMenu();
+        tutorialMgr->prepareSlides(TutorialManager::TutorialSlidesType::TUTORIAL_SLIDES_FLIGHT_TRAINER);
         
         switch (player->lastPlayed)
         {
@@ -151,6 +153,11 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
         player->choice1RestartCounter++;
         player->choice2RestartCounter++;
         player->choice3RestartCounter++;
+
+
+        
+    
+        
     }
     else if (queryGUI == "play")
     {
@@ -200,7 +207,10 @@ void EngineSchedulerMenu::activatePerformSingleTap(float x, float y)
                     }
                 }
             }
+            
         }
+        
+        
     }
     else if (queryGUI == "reroll")
     {
@@ -258,13 +268,17 @@ void EngineSchedulerMenu::activatePerformDoubleTap(float x, float y)
     }
 }
 
-void EngineSchedulerMenu::activateReturnFromPopup()
+
+void EngineSchedulerMenu::activateReturnFromPopup(TutorialManager::TutorialSlidesType type)
 {
     // Fortunately, the only tutorial popup for the scheduler menu is
     // the session over window popup. So we can use this function to handle
     // that.
-    engineStateMgr->requestPopEngine();
-    player->sessionStarted = false;
+    
+    if (type != TutorialManager::TutorialSlidesType::TUTORIAL_SLIDES_FLIGHT_TRAINER) {
+        engineStateMgr->requestPopEngine();
+        player->sessionStarted = false;
+    }
 }
 
 #if !defined(OGRE_IS_IOS)

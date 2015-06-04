@@ -1878,6 +1878,7 @@ void Util::setSkyboxAndFog(std::string nameSkybox)
     plane.normal = Ogre::Vector3(0, 0, 1);
     OgreFramework::getSingletonPtr()->m_pSceneMgrMain->setSkyPlane(true, plane, nameSkybox, 1, 4, true);
     OgreFramework::getSingletonPtr()->m_pSceneMgrMain->setFog(Ogre::FOG_LINEAR, Ogre::ColourValue::ZERO, 0.0, 300.0, 600.0);
+//    OgreFramework::getSingletonPtr()->m_pSceneMgrMain->setFog(Ogre::FOG_EXP2, Ogre::ColourValue::ZERO, 0.025);
     OgreFramework::getSingletonPtr()->m_pViewportMain->setBackgroundColour(ColourValue(0.0f, 0.0f, 0.0f, 1.0f));
     OgreFramework::getSingletonPtr()->m_pSceneMgrMain->getSkyPlaneNode()->resetToInitialState();
 }

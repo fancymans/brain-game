@@ -366,13 +366,14 @@ void OgreApp::activatePerformSingleTap(float x, float y)
     player->addAction(ACTION_SINGLE_TAP);
     if (player->getTutorialMgr()->isVisible())
     {
+        TutorialManager::TutorialSlidesType prevType = player->getTutorialMgr()->type;
         if (player->getTutorialMgr()->processInput(Vector2(x, y)))
             player->reactGUI();
         if (player->getTutorialMgr()->isHidden())
         {
             Engine* activeEngine = engineStateMgr->getActiveEngine();
             if (activeEngine)
-                activeEngine->activateReturnFromPopup();
+                activeEngine->activateReturnFromPopup(prevType);
         }
         return;
     }
@@ -516,13 +517,14 @@ bool OgreApp::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
     OgreFramework::getSingletonPtr()->mousePressed(evt, id);
     if (player->getTutorialMgr()->isVisible())
     {
+        TutorialManager::TutorialSlidesType prevType = player->getTutorialMgr()->type;
         if (player->getTutorialMgr()->processInput(Vector2(evt.state.X.abs, evt.state.Y.abs)))
             player->reactGUI();
         if (player->getTutorialMgr()->isHidden())
         {
             Engine* activeEngine = engineStateMgr->getActiveEngine();
             if (activeEngine)
-                activeEngine->activateReturnFromPopup();
+                activeEngine->activateReturnFromPopup(prevType);
         }
         return true;
     }

@@ -27,7 +27,6 @@ HudSchedulerMenu::~HudSchedulerMenu()
 
 void HudSchedulerMenu::init()
 {
-    
     alloc();
     initOverlay();
     showOverlays();
@@ -92,25 +91,7 @@ void HudSchedulerMenu::update(float elapsed)
     
     sessionDisplay->setCaption("Session\n" + Util::toStringInt(player->getSessionID()));
     
-    timeRemainingTotal = globals.sessionTime -  player->getTotalElapsed();
-    if(timeRemainingTotal < 0)
-    {
-        timeRemainingTotal = 0;
-    }
-    
-    timeRemainingMins = int(timeRemainingTotal + 0.5);
-    timeRemainingSecs = timeRemainingMins % 60;
-    timeRemainingMins = timeRemainingMins/60;
-    
-    timeRemainingString = "Time Remaining: "+ Util::toStringInt(timeRemainingMins) + ":";
-    
-    if(timeRemainingSecs < 10) // 1 digit
-    {
-        timeRemainingString += "0";
-    }
-    timeRemainingString += Util::toStringInt(timeRemainingSecs);
-    
-    sessionTimeRemainingTextDisplay->setCaption(timeRemainingString);
+    setTimeRemaining();
 }
 
 std::string HudSchedulerMenu::processButtons(Vector2 target)
@@ -361,7 +342,6 @@ void HudSchedulerMenu::initOverlay()
 {
     Ogre::ColourValue fontColor = Ogre::ColourValue(0.62f, 0.85f, 0.85f);
     
-    
     sessionTimeRemainingBackground->setMetricsMode(GMM_RELATIVE);
     sessionTimeRemainingBackground->setPosition(0.700, 0.185);
     sessionTimeRemainingBackground->setDimensions(0.0, 0.0);
@@ -372,6 +352,7 @@ void HudSchedulerMenu::initOverlay()
     sessionTimeRemainingTextDisplay->setCharHeight(0.018 * FONT_SZ_MULT);
     sessionTimeRemainingTextDisplay->setFontName("MainSmall");
     sessionTimeRemainingTextDisplay->setColour(fontColor);
+    setTimeRemaining();
     
     sessionBackground->setMetricsMode(GMM_RELATIVE);
     sessionBackground->setPosition(0.700, 0.275);
@@ -383,6 +364,7 @@ void HudSchedulerMenu::initOverlay()
     sessionDisplay->setCharHeight(0.032 * FONT_SZ_MULT);
     sessionDisplay->setFontName("MainSmall");
     sessionDisplay->setColour(fontColor);
+    sessionDisplay->setCaption("Session\n" + Util::toStringInt(player->getSessionID()));
     
     //Man Recess Init
     schedulerManRecessMessageBackground->setMetricsMode(GMM_RELATIVE);
@@ -891,6 +873,28 @@ void HudSchedulerMenu::setSelectToIcon(PanelOverlayElement* icon, int mode)
     }
 }
 
+void HudSchedulerMenu::setTimeRemaining()
+{
+    timeRemainingTotal = globals.sessionTime -  player->getTotalElapsed();
+    if(timeRemainingTotal < 0)
+    {
+        timeRemainingTotal = 0;
+    }
+    
+    timeRemainingMins = int(timeRemainingTotal + 0.5);
+    timeRemainingSecs = timeRemainingMins % 60;
+    timeRemainingMins = timeRemainingMins/60;
+    
+    timeRemainingString = "Time Remaining: "+ Util::toStringInt(timeRemainingMins) + ":";
+    
+    if(timeRemainingSecs < 10) // 1 digit
+    {
+        timeRemainingString += "0";
+    }
+    timeRemainingString += Util::toStringInt(timeRemainingSecs);
+    
+    sessionTimeRemainingTextDisplay->setCaption(timeRemainingString);
+}
 
 // Set how the levels in the history panel are displayed without them being selected
 void HudSchedulerMenu::setScheduleHistory()

@@ -26,17 +26,17 @@ public:
     virtual EngineState getEngineType() const {
         return ENGINE_SCHEDULER_MENU;
     }
-
+    
     virtual void activatePerformSingleTap(float x, float y);
     virtual void activatePerformDoubleTap(float x, float y);
-
-    virtual void activateReturnFromPopup();
-
+    
+    virtual void activateReturnFromPopup(TutorialManager::TutorialSlidesType type);
+    
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
     virtual void mouseMoved(const OIS::MouseEvent &evt);
 	virtual void mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 	virtual void mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
-
+    
     virtual void keyPressed(const OIS::KeyEvent &keyEventRef);
 	virtual void keyReleased(const OIS::KeyEvent &keyEventRef);
 #endif

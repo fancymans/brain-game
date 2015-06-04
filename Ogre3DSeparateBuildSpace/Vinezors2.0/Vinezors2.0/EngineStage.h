@@ -46,7 +46,7 @@ public:
     virtual void activateVelocity(float vel);
     virtual void activateAngleTurn(float angle, float vel);
     
-    virtual void activateReturnFromPopup();
+    virtual void activateReturnFromPopup(TutorialManager::TutorialSlidesType type);
     
 #if OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
     virtual void mouseMoved(const OIS::MouseEvent &evt);

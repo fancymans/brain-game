@@ -104,8 +104,8 @@ void HudStudySettings::hidePopUp()
     somethingChangedRevertButton->removeChild("somethingChangedRevertButtonText");
     overlay1->remove2D(somethingChangedRevertButton);
     
-    buttons[BUTTON_POPUP_REVERT].hide();
-    buttons[BUTTON_POPUP_OK].hide();
+    buttons[BUTTON_POPUP_REVERT].hide(false);
+    buttons[BUTTON_POPUP_OK].hide(false);
 }
 void HudStudySettings::update(float elapsed)
 {
@@ -784,7 +784,7 @@ void HudStudySettings::update(float elapsed)
         
         if(numpadIsOut)
         {
-            buttons[NUMPAD_BG].hide();
+            buttons[NUMPAD_BG].hide(false);
             overlay1->remove2D(numpadBackground);
             
             numpadIsOut = false;
@@ -999,8 +999,8 @@ void HudStudySettings::alloc()
     holdoutStepsNumberTextDisplay = static_cast<TextAreaOverlayElement*>(OgreFramework::getSingletonPtr()->m_pOverlayMgr->createOverlayElement("TextArea", "holdoutStepsNumberTextDisplay"));
     
     buttons = std::vector<HudButton>(NUM_UNIQUE_BUTTONS);
-    buttons[BUTTON_POPUP_REVERT].hide();
-    buttons[BUTTON_POPUP_OK].hide();
+    buttons[BUTTON_POPUP_REVERT].hide(false);
+    buttons[BUTTON_POPUP_OK].hide(false);
     
     // Create an overlay, and add the panel
     Overlay* overlay1 = OgreFramework::getSingletonPtr()->m_pOverlayMgr->create("StudySettingsOverlay");
@@ -2102,7 +2102,7 @@ void HudStudySettings::initOverlay()
     buttons[BUTTON_NUMPAD_SAVE].setButton("numpadbuttonsave", overlays[0], GMM_RELATIVE, Vector2(0.165, 0.395), Vector2(0.12, 0.06), numpadButton_Save, NULL); //.375 .02
     
     buttons[NUMPAD_BG].setButton("numpad", overlays[0], GMM_RELATIVE, Vector2(0.65, 0.40), Vector2(0.5, 0.5), numpadBackground, NULL);
-    buttons[NUMPAD_BG].hide();
+    buttons[NUMPAD_BG].hide(false);
     
     // The Enable NewNav Checkbox
     {

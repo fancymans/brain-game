@@ -1087,7 +1087,7 @@ void EngineStage::activateAngleTurn(float angle, float vel)
     }
 }
 
-void EngineStage::activateReturnFromPopup()
+void EngineStage::activateReturnFromPopup(TutorialManager::TutorialSlidesType type)
 {
     if (player->endFlag)
     {
